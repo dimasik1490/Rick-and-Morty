@@ -14,12 +14,7 @@ import jwt_decode from "jwt-decode";
 function App() {
 
   const [user, setUser] = useState(localStorage.getItem('user'))
-  const [selectedChar, setChar] = useState(null);
   const [searchValue, setSearchValue] = useState(localStorage.getItem('searchValue') ?? '');
-
-  const onSelectChar = (char) => {
-    setChar(char);
-  }
 
   const onLogOut = () =>{
     localStorage.removeItem('user');
@@ -28,7 +23,7 @@ function App() {
 
   if(!user){
     return(
-      <>
+      <div className='login'>
       <GoogleLogin
         onSuccess={credentialResponse => {
         var decoded = jwt_decode(credentialResponse.credential);
@@ -39,19 +34,19 @@ function App() {
           console.log('Login Failed');
         }}
       />   
-    </>
+    </div>
     )
   }else{
     return (    
       <Router>
         <div className="App">     
-          <h5 className='logOut' onClick={()=>onLogOut()}>logOut</h5>
+        {/* Я не знав що робити з авторизацією далі, тому додав кнопку Log out.*/}
+          <h5 className='logOut' onClick={()=>onLogOut()}>Log out</h5>
           <Routes>
             <Route path="/" element={<MainPage searchValue={searchValue} 
-                                              setSearchValue={setSearchValue} 
-                                              onSelectChar={onSelectChar}/>} />
-            <Route path="/characters/:id" element={<CharCard selectedChar={selectedChar}
-                                                             setChar={setChar}/>} />
+                                              setSearchValue={setSearchValue}/>} />
+            <Route path="/characters/:id" element={<CharCard/>} />
+            <Route path="*" element={'This page is not defined'}/>
           </Routes>
         </div>
       </Router>

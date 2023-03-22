@@ -2,20 +2,20 @@ import './charCard.css'
 
 import UseChar from '../../services/charService';
 
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const CharCard = (selectedChar) => {
+const CharCard = () => {
 
-    const [char, setChar] = useState(selectedChar)
+    const {id} = useParams();
 
-    console.log(char)
+    const [char, setChar] = useState({})
 
     useEffect(() => {
-            UseChar(selectedChar)
+            UseChar(id)
             .then(data => setChar(data))
             .catch(err => console.log(err))
-    }, []);
+    }, [id]);
 
 
     return(

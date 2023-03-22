@@ -1,4 +1,4 @@
-import logo from '../../resources/images/logo.png'
+import logo from '../../resources/logo.png'
 import './header.css'
 
 const Header = ({ searchValue, setSearchValue }) =>{

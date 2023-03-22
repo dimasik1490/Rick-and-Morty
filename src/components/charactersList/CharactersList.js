@@ -4,7 +4,7 @@ import UseRickService from '../../services/rickService';
 
 import { Link } from 'react-router-dom';
 
-const CharactersList = ({searchValue, onSelectChar}) => {
+const CharactersList = ({searchValue}) => {
 
     const [characters, setCharacters] = useState([]);
 
@@ -24,7 +24,7 @@ const CharactersList = ({searchValue, onSelectChar}) => {
     const createList = (arr) => {
         const listItems = arr.map((char) => {
             return(
-            <Link to={`/characters/${char.id}`} key={char.id} onClick={() => onSelectChar(char.id)}>
+            <Link to={`/characters/${char.id}`} key={char.id} >
                 <li className="char__item">
                     <img src={char.image} alt={char.name} className="char_img"/>
                     <div className="char__name">{char.name}</div>
