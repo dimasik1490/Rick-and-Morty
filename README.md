@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setup
+
+Copy '.env' to '.env.local' and fill 'REACT_APP_GOOGLE_CLIENT_ID' with your OAuth id;
+
 ## Available Scripts
 
 In the project directory, you can run:
