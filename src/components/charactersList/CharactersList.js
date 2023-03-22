@@ -24,7 +24,7 @@ const CharactersList = ({searchValue, onSelectChar}) => {
     const createList = (arr) => {
         const listItems = arr.map((char) => {
             return(
-            <Link to={`/characters/${char.id}`} key={char.id} onClick={onSelectChar}>
+            <Link to={`/characters/${char.id}`} key={char.id} onClick={() => onSelectChar(char.id)}>
                 <li className="char__item">
                     <img src={char.image} alt={char.name} className="char_img"/>
                     <div className="char__name">{char.name}</div>
@@ -41,12 +41,6 @@ const CharactersList = ({searchValue, onSelectChar}) => {
     }
 
     const charList = createList(filteredPosts)
-
-    // useEffect(() => {
-    //     if (selectedChar) {
-    //         onChooseChar(selectedChar);
-    //     }
-    // }, [selectedChar, onChooseChar]);
 
     return (
         <div className="char__list__wrapper">
